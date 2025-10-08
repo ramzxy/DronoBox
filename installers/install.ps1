@@ -27,7 +27,6 @@ Write-Centered "            INSTALLATION WIZARD - Drone Tools Setup             
 Write-Centered "=================================================================" "Yellow"
 Write-Host ""
 
-Write-Host ""
 Write-Centered "Welcome! This installer will set up everything you need" "White"
 Write-Centered "to get your drone connected and configured." "White"
 Write-Host ""
