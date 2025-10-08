@@ -6,10 +6,16 @@ A one-click installer for essential drone development tools. Supports Windows, m
 
 ### Windows
 
-Copy and paste this command into **Command Prompt** (run as Administrator):
+Copy and paste this command into **PowerShell** (run as Administrator):
+
+```powershell
+irm https://raw.githubusercontent.com/ramzxy/DronoBox/main/installers/install.bat | Out-File -Encoding UTF8 $env:TEMP\dronobox-install.bat; & $env:TEMP\dronobox-install.bat
+```
+
+Or if you prefer Command Prompt:
 
 ```cmd
-powershell -Command "iwr -Uri 'https://raw.githubusercontent.com/ramzxy/DronoBox/main/installers/install.bat' -OutFile install.bat; .\install.bat"
+powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/ramzxy/DronoBox/main/installers/install.bat | Out-File -Encoding UTF8 $env:TEMP\dronobox-install.bat; & $env:TEMP\dronobox-install.bat"
 ```
 
 ### macOS
