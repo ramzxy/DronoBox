@@ -1,6 +1,6 @@
 # DronoBox
 
-A one-click installer for essential drone development tools on Windows.
+A one-click installer for essential DronoBox tools on Windows.
 
 ## 🚀 Quick Install
 
