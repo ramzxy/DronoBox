@@ -37,36 +37,20 @@ if [[ "$OSTYPE" != "darwin"* ]]; then
 fi
 
 # ========================================================
-# Step 1: Get latest release URL
+# Step 1: Download Betaflight Configurator
 # ========================================================
-echo -e "${BLUE}[STEP 1/4]${NC} Fetching latest Betaflight Configurator version..."
+echo -e "${BLUE}[STEP 1/3]${NC} Downloading Betaflight Configurator v10.10.0..."
 echo "--------------------------------------------------------"
 
-LATEST_URL=$(curl -s https://api.github.com/repos/betaflight/betaflight-configurator/releases/latest | \
-    grep "browser_download_url.*dmg" | \
-    cut -d '"' -f 4)
+DMG_FILE="betaflight-configurator_10.10.0_macOS.dmg"
+DOWNLOAD_URL="https://github.com/betaflight/betaflight-configurator/releases/download/10.10.0/betaflight-configurator_10.10.0_macOS.dmg"
 
-if [ -z "$LATEST_URL" ]; then
-    echo -e "${RED}[ERROR]${NC} Failed to fetch latest release URL!"
-    echo "Please check your internet connection or visit:"
-    echo "https://github.com/betaflight/betaflight-configurator/releases"
-    exit 1
-fi
-
-echo -e "${GREEN}[SUCCESS]${NC} Found latest version!"
-echo ""
-
-# ========================================================
-# Step 2: Download Betaflight Configurator
-# ========================================================
-echo -e "${BLUE}[STEP 2/4]${NC} Downloading Betaflight Configurator..."
-echo "--------------------------------------------------------"
-
-DMG_FILE="betaflight-configurator.dmg"
-curl -L -o "$DMG_FILE" "$LATEST_URL"
+curl -L -o "$DMG_FILE" "$DOWNLOAD_URL"
 
 if [ $? -ne 0 ]; then
     echo -e "${RED}[ERROR]${NC} Failed to download Betaflight Configurator!"
+    echo "Please check your internet connection or visit:"
+    echo "https://github.com/betaflight/betaflight-configurator/releases"
     exit 1
 fi
 
@@ -74,9 +58,9 @@ echo -e "${GREEN}[SUCCESS]${NC} Downloaded successfully!"
 echo ""
 
 # ========================================================
-# Step 3: Mount and Install
+# Step 2: Mount and Install
 # ========================================================
-echo -e "${BLUE}[STEP 3/4]${NC} Installing Betaflight Configurator..."
+echo -e "${BLUE}[STEP 2/3]${NC} Installing Betaflight Configurator..."
 echo "--------------------------------------------------------"
 
 # Mount the DMG
@@ -121,9 +105,9 @@ echo -e "${GREEN}[SUCCESS]${NC} Betaflight Configurator installed!"
 echo ""
 
 # ========================================================
-# Step 4: Cleanup
+# Step 3: Cleanup
 # ========================================================
-echo -e "${BLUE}[STEP 4/4]${NC} Cleaning up..."
+echo -e "${BLUE}[STEP 3/3]${NC} Cleaning up..."
 echo "--------------------------------------------------------"
 
 # Unmount the DMG

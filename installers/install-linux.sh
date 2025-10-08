@@ -58,42 +58,35 @@ echo -e "${BLUE}[INFO]${NC} Detected package manager: $PKG_MANAGER"
 echo ""
 
 # ========================================================
-# Step 1: Get latest release URL
+# Step 1: Determine download URL based on package manager
 # ========================================================
-echo -e "${BLUE}[STEP 1/5]${NC} Fetching latest Betaflight Configurator version..."
+echo -e "${BLUE}[STEP 1/4]${NC} Preparing Betaflight Configurator v10.10.0..."
 echo "--------------------------------------------------------"
 
+VERSION="10.10.0"
+BASE_URL="https://github.com/betaflight/betaflight-configurator/releases/download/${VERSION}"
+
 if [ "$PKG_MANAGER" = "apt" ]; then
-    DOWNLOAD_URL=$(curl -s https://api.github.com/repos/betaflight/betaflight-configurator/releases/latest | \
-        grep "browser_download_url.*amd64.*deb" | \
-        cut -d '"' -f 4)
+    DOWNLOAD_URL="${BASE_URL}/betaflight-configurator_${VERSION}_amd64.deb"
     FILE_EXT="deb"
 elif [ "$PKG_MANAGER" = "dnf" ] || [ "$PKG_MANAGER" = "yum" ]; then
-    DOWNLOAD_URL=$(curl -s https://api.github.com/repos/betaflight/betaflight-configurator/releases/latest | \
-        grep "browser_download_url.*x86_64.*rpm" | \
-        cut -d '"' -f 4)
+    DOWNLOAD_URL="${BASE_URL}/betaflight-configurator-${VERSION}-1.x86_64.rpm"
     FILE_EXT="rpm"
 else
-    DOWNLOAD_URL=$(curl -s https://api.github.com/repos/betaflight/betaflight-configurator/releases/latest | \
-        grep "browser_download_url.*AppImage" | \
-        cut -d '"' -f 4)
-    FILE_EXT="AppImage"
+    # No AppImage for this version, fall back to DEB (can be converted)
+    echo -e "${YELLOW}[WARNING]${NC} No AppImage available for v${VERSION}"
+    echo "              Falling back to .deb package (requires alien or manual extraction)"
+    DOWNLOAD_URL="${BASE_URL}/betaflight-configurator_${VERSION}_amd64.deb"
+    FILE_EXT="deb"
 fi
 
-if [ -z "$DOWNLOAD_URL" ]; then
-    echo -e "${RED}[ERROR]${NC} Failed to fetch latest release URL!"
-    echo "Please check your internet connection or visit:"
-    echo "https://github.com/betaflight/betaflight-configurator/releases"
-    exit 1
-fi
-
-echo -e "${GREEN}[SUCCESS]${NC} Found latest version!"
+echo -e "${GREEN}[SUCCESS]${NC} Package format: $FILE_EXT"
 echo ""
 
 # ========================================================
 # Step 2: Download Betaflight Configurator
 # ========================================================
-echo -e "${BLUE}[STEP 2/5]${NC} Downloading Betaflight Configurator..."
+echo -e "${BLUE}[STEP 2/4]${NC} Downloading Betaflight Configurator v${VERSION}..."
 echo "--------------------------------------------------------"
 
 INSTALLER_FILE="betaflight-configurator.$FILE_EXT"
@@ -101,6 +94,8 @@ curl -L -o "$INSTALLER_FILE" "$DOWNLOAD_URL"
 
 if [ $? -ne 0 ]; then
     echo -e "${RED}[ERROR]${NC} Failed to download Betaflight Configurator!"
+    echo "Please check your internet connection or visit:"
+    echo "https://github.com/betaflight/betaflight-configurator/releases"
     exit 1
 fi
 
@@ -110,7 +105,7 @@ echo ""
 # ========================================================
 # Step 3: Install Betaflight Configurator
 # ========================================================
-echo -e "${BLUE}[STEP 3/5]${NC} Installing Betaflight Configurator..."
+echo -e "${BLUE}[STEP 3/4]${NC} Installing Betaflight Configurator..."
 echo "--------------------------------------------------------"
 
 if [ "$FILE_EXT" = "deb" ]; then
@@ -153,9 +148,9 @@ echo -e "${GREEN}[SUCCESS]${NC} Betaflight Configurator installed!"
 echo ""
 
 # ========================================================
-# Step 4: Setup USB permissions (udev rules)
+# Step 4: Cleanup
 # ========================================================
-echo -e "${BLUE}[STEP 4/5]${NC} Setting up USB permissions..."
+echo -e "${BLUE}[STEP 4/4]${NC} Setting up USB permissions and cleaning up..."
 echo "--------------------------------------------------------"
 
 UDEV_RULES="/etc/udev/rules.d/99-betaflight.rules"
@@ -188,19 +183,13 @@ EOF
 else
     echo -e "${YELLOW}[SKIP]${NC} udev rules already exist"
 fi
-echo ""
 
-# ========================================================
-# Step 5: Cleanup
-# ========================================================
-echo -e "${BLUE}[STEP 5/5]${NC} Cleaning up..."
-echo "--------------------------------------------------------"
-
+# Cleanup installer file
 if [ "$FILE_EXT" != "AppImage" ]; then
     rm -f "$INSTALLER_FILE"
 fi
 
-echo -e "${GREEN}[SUCCESS]${NC} Cleanup completed!"
+echo -e "${GREEN}[SUCCESS]${NC} Setup completed!"
 echo ""
 
 # ========================================================
