@@ -7,10 +7,9 @@ A one-click installer for essential drone development tools on Windows.
 Copy and paste this command into **Command Prompt** (run as Administrator):
 
 ```cmd
-powershell -Command "iwr -Uri 'https://raw.githubusercontent.com/USERNAME/DronoBox/main/installers/install.bat' -OutFile install.bat; .\install.bat"
+powershell -Command "iwr -Uri 'https://raw.githubusercontent.com/ramzxy/DronoBox/main/installers/install.bat' -OutFile install.bat; .\install.bat"
 ```
 
-> **Note:** Replace `USERNAME` with the actual GitHub username before using.
 
 ## 📦 What Gets Installed
 
