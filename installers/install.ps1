@@ -27,16 +27,19 @@ Write-Centered "            INSTALLATION WIZARD - Drone Tools Setup             
 Write-Centered "=================================================================" "Yellow"
 Write-Host ""
 
-Write-Host "  Welcome! This installer will set up everything you need" -ForegroundColor White
-Write-Host "  to get your drone connected and configured." -ForegroundColor White
+Write-Centered "  Welcome! This installer will set up everything you need" "White"
+Write-Centered "  to get your drone connected and configured." "White"
 Write-Host ""
 
-Write-Host "  What we'll install:" -ForegroundColor Green
-Write-Host "     * ImpulseRC Driver Fixer   (fixes USB connection issues)" -ForegroundColor Gray
-Write-Host "     * Betaflight Configurator  (configure your drone)" -ForegroundColor Gray
+Write-Centered "  What we'll install:" "Green"
+Write-Centered "     * ImpulseRC Driver Fixer   (fixes USB connection issues)" "Gray"
+Write-Centered "     * Betaflight Configurator  (configure your drone)" "Gray"
 Write-Host ""
 
-Write-Host "  Estimated time: 2-3 minutes" -ForegroundColor Magenta
+Write-Centered "  Estimated time: 2-3 minutes" "Magenta"
+Write-Host ""
+Write-Host ""
+Write-Host ""
 Write-Host ""
 
 Write-Host "=================================================================" -ForegroundColor Cyan
