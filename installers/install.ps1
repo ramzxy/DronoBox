@@ -28,25 +28,23 @@ Write-Centered "================================================================
 Write-Host ""
 
 Write-Host ""
-Write-Centered "  Welcome! This installer will set up everything you need" "White"
-Write-Centered "  to get your drone connected and configured." "White"
+Write-Centered "Welcome! This installer will set up everything you need" "White"
+Write-Centered "to get your drone connected and configured." "White"
 Write-Host ""
 
 Write-Host ""
-Write-Centered "  What we'll install:" "Green"
-Write-Centered "     * ImpulseRC Driver Fixer   (fixes USB connection issues)" "Gray"
-Write-Centered "     * Betaflight Configurator  (configure your drone)" "Gray"
+Write-Centered "What we'll install:" "Green"
+Write-Centered "* ImpulseRC Driver Fixer   (fixes USB connection issues)" "Gray"
+Write-Centered "* Betaflight Configurator  (configure your drone)" "Gray"
 Write-Host ""
 
-Write-Centered "  Estimated time: 2-3 minutes" "Magenta"
-Write-Host ""
-Write-Host ""
+Write-Centered "Estimated time: 2-3 minutes" "Magenta"
 Write-Host ""
 Write-Host ""
 
-Write-Host "=================================================================" -ForegroundColor Cyan
-Write-Host "  Starting installation in a moment...                          " -ForegroundColor Cyan
-Write-Host "=================================================================" -ForegroundColor Cyan
+Write-Centered "=================================================================" "Cyan"
+Write-Centered "Starting installation in a moment..." "Cyan"
+Write-Centered "=================================================================" "Cyan"
 Write-Host ""
 
 Start-Sleep -Seconds 2
