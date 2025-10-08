@@ -10,12 +10,20 @@ set "PS=powershell -NoProfile -Command"
 
 cls
 
-REM Welcome banner
-%PS% "Write-Host ''; Write-Host '╔════════════════════════════════════════════════════════════════╗' -ForegroundColor Cyan"
-%PS% "Write-Host '║' -ForegroundColor Cyan -NoNewline; Write-Host '                                                                ' -NoNewline; Write-Host '║' -ForegroundColor Cyan"
-%PS% "Write-Host '║' -ForegroundColor Cyan -NoNewline; Write-Host '           🚁  DRONOBOX INSTALLATION WIZARD  🚁            ' -ForegroundColor Yellow -NoNewline; Write-Host '    ║' -ForegroundColor Cyan"
-%PS% "Write-Host '║' -ForegroundColor Cyan -NoNewline; Write-Host '                                                                ' -NoNewline; Write-Host '║' -ForegroundColor Cyan"
-%PS% "Write-Host '╚════════════════════════════════════════════════════════════════╝' -ForegroundColor Cyan; Write-Host ''"
+REM Welcome banner with ASCII art
+%PS% "Write-Host ''"
+%PS% "Write-Host '    ██████████                                          ███████████                     ' -ForegroundColor Cyan"
+%PS% "Write-Host '   ▒▒███▒▒▒▒███                                        ▒▒███▒▒▒▒▒███                    ' -ForegroundColor Cyan"
+%PS% "Write-Host '    ▒███   ▒▒███ ████████   ██████  ████████    ██████  ▒███    ▒███  ██████  █████ █████' -ForegroundColor Cyan"
+%PS% "Write-Host '    ▒███    ▒███▒▒███▒▒███ ███▒▒███▒▒███▒▒███  ███▒▒███ ▒██████████  ███▒▒███▒▒███ ▒▒███ ' -ForegroundColor Cyan"
+%PS% "Write-Host '    ▒███    ▒███ ▒███ ▒▒▒ ▒███ ▒███ ▒███ ▒███ ▒███ ▒███ ▒███▒▒▒▒▒███▒███ ▒███ ▒▒▒█████▒  ' -ForegroundColor Cyan"
+%PS% "Write-Host '    ▒███    ███  ▒███     ▒███ ▒███ ▒███ ▒███ ▒███ ▒███ ▒███    ▒███▒███ ▒███  ███▒▒▒███ ' -ForegroundColor Cyan"
+%PS% "Write-Host '    ██████████   █████    ▒▒██████  ████ █████▒▒██████  ███████████ ▒▒██████  █████ █████' -ForegroundColor Cyan"
+%PS% "Write-Host '   ▒▒▒▒▒▒▒▒▒▒   ▒▒▒▒▒      ▒▒▒▒▒▒  ▒▒▒▒ ▒▒▒▒▒  ▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒▒▒▒   ▒▒▒▒▒▒  ▒▒▒▒▒ ▒▒▒▒▒ ' -ForegroundColor Cyan"
+%PS% "Write-Host ''"
+%PS% "Write-Host '╔════════════════════════════════════════════════════════════════════════════════════════╗' -ForegroundColor Yellow"
+%PS% "Write-Host '║' -ForegroundColor Yellow -NoNewline; Write-Host '                          🚁  INSTALLATION WIZARD  🚁                                ' -ForegroundColor White -NoNewline; Write-Host '║' -ForegroundColor Yellow"
+%PS% "Write-Host '╚════════════════════════════════════════════════════════════════════════════════════════╝' -ForegroundColor Yellow; Write-Host ''"
 
 %PS% "Write-Host '  Welcome! This installer will set up everything you need' -ForegroundColor White"
 %PS% "Write-Host '  to get your drone connected and configured.' -ForegroundColor White; Write-Host ''"
