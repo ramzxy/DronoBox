@@ -9,22 +9,22 @@ A one-click installer for essential drone development tools. Supports Windows, m
 Copy and paste this command into **PowerShell** (run as Administrator):
 
 ```powershell
-iwr -useb https://raw.githubusercontent.com/ramzxy/DronoBox/main/installers/install.ps1 | iex
+iwr -useb https://raw.githubusercontent.com/ramzxy/DronoBox/main/installers/install-simple.ps1 | iex
 ```
 
 Or if you prefer a longer but more explicit version:
 
 ```powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/ramzxy/DronoBox/main/installers/install.ps1" -UseBasicParsing | Invoke-Expression
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/ramzxy/DronoBox/main/installers/install-simple.ps1" -UseBasicParsing | Invoke-Expression
 ```
 
 From Command Prompt (run as Administrator):
 
 ```cmd
-powershell -ExecutionPolicy Bypass -Command "iwr -useb https://raw.githubusercontent.com/ramzxy/DronoBox/main/installers/install.ps1 | iex"
+powershell -ExecutionPolicy Bypass -Command "iwr -useb https://raw.githubusercontent.com/ramzxy/DronoBox/main/installers/install-simple.ps1 | iex"
 ```
 
-> **Note**: A traditional `install.bat` batch file is also available in the `installers/` folder if you prefer to download and run it manually.
+> **Note**: There's also a fancier version with emoji and Unicode characters available at `install.ps1`, but `install-simple.ps1` works on all Windows terminals.
 
 ### macOS
 
