@@ -2,6 +2,18 @@
 # Run this with: iwr -useb https://raw.githubusercontent.com/ramzxy/DronoBox/main/installers/install.ps1 | iex
 
 $ErrorActionPreference = "Stop"
+
+# Set console to UTF-8 to display emojis and special characters
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = [System.Text.Encoding]::UTF8
+
+# Try to set console code page to UTF-8 (65001)
+try {
+    chcp 65001 | Out-Null
+} catch {
+    # Silently continue if this fails
+}
+
 $host.ui.RawUI.WindowTitle = "DronoBox Installer - Setting up your drone tools!"
 
 Clear-Host
