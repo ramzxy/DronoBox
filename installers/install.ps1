@@ -28,9 +28,7 @@ Write-Centered "================================================================
 Write-Host ""
 
 
-Write-Host ""
-Write-Host ""
-Write-Host ""
+
 Write-Host ""
 Write-Host ""
 Write-Centered "Welcome! This installer will set up everything you need" "White"
